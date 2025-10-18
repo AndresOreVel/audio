@@ -1,0 +1,11 @@
+<section class="category__container" [ngClass]="{ 'normal': !reverse }">
+    <div class="category__container--image">
+        <img [src]="image" [alt]="alt">
+    </div>
+    <div class="category__container--content">
+        <p *ngIf="overline" class="category__container--content-overline">{{ overline }}</p>
+        <h2>{{ title }}</h2>
+        <p>{{ description }}</p>
+        <button type="button" (click)="goToDetails()">See product</button>
+    </div>
+</section>

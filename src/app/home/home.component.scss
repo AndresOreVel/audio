@@ -1,0 +1,492 @@
+@use '../../sass/variables' as *;
+@use '../../sass/utilities' as *;
+@use '../../sass/mixins' as *;
+
+.header__image {
+    width: 100%;
+    margin: $normalMargin;
+    padding: 12.5rem 0;
+    background-image: url(../../assets/images/Home/image-hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right 10px top -75px;
+
+    @include breakpoint-down (mobile) {
+        margin: 0;
+        background-image: url(../../assets/images/Mobile/image-header.jpg);
+        background-position: center -70px;
+    }
+
+    @include breakpoint-between (mobile, tablet) {
+        margin: 0;
+        background-image: url(../../assets/images/Home/image-hero.jpg);
+        background-position: center right 17%;
+    }
+}
+
+.header__content {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include breakpoint-down (mobile) {
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    @include breakpoint-between (mobile, tablet) {
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    &--new-product {
+        opacity: .5;
+        letter-spacing: 10px;
+        text-transform: uppercase;
+    }
+
+    &--title {
+        font-size: 3.5rem;
+        text-transform: uppercase;
+        max-inline-size: 12ch;
+        line-height: 58px;
+        letter-spacing: 1px;
+        margin: 0;
+
+        @include breakpoint-down (mobile) {
+            text-align: center;
+        }
+    }
+
+    &--text {
+        opacity: .5;
+        max-inline-size: 40ch;
+        line-height: 25px;
+
+        @include breakpoint-down (mobile) {
+            text-align: center;
+        }
+    }
+
+    button {
+        @extend %button-shared;
+        border: none;
+        background-color: $orange;
+        color: white;
+
+        &:hover {
+            background-color: $orange-light;
+        }
+    }
+}
+
+.home__categories {
+    width: 100%;
+    background-color: white;
+    padding: $normalPadding;
+    display: flex;
+    justify-content: space-between;
+
+    @include breakpoint-down (mobile) {
+        flex-direction: column;
+        gap: 7rem;
+        padding: 7rem 2rem 3rem 2rem;
+    }
+
+    @include breakpoint-between (mobile, tablet) {
+        display: flex;
+        padding: 15% 5%;
+    }
+
+    &--nav {
+        background-color: $gray-bg;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3.5rem 6.5rem 1.7rem 6.5rem;
+        gap: 0.7rem;
+        color: black;
+        text-transform: uppercase;
+        position: relative;
+
+        @include breakpoint-between (mobile, tablet) {
+            padding: $tabletPadding;
+        }
+
+        &-img {
+            max-width: 180px;
+            position: absolute;
+            top: -85px;
+        }
+
+        &-title {
+            font-weight: 700;
+            letter-spacing: .067rem;
+            font-size: 0.9375rem;
+        }
+
+        &-shop {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            font-size: 0.8125rem;
+            letter-spacing: 1.7px;
+
+            p {
+                opacity: .5;
+
+                &:hover {
+                    color: $orange;
+                }
+            }
+        }
+    }
+}
+
+.home__products {
+    width: 100%;
+    background-color: white;
+    padding: $normalPadding;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    @include breakpoint-down (mobile) {
+        gap: 3rem;
+        padding: 0 2rem 2rem;
+    }
+
+    @include breakpoint-between (mobile, tablet) {
+        padding: 0 5%;
+    }
+
+    &__top {
+        background-color: $orange;
+        border-radius: 8px;
+        display: flex;
+        justify-content: flex-start;
+        color: white;
+        position: relative;
+        padding: 12rem 3rem 3rem 3rem;
+        overflow: hidden;
+
+        @include breakpoint-down (mobile) {
+            position: static;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 0;
+            gap: 2.5rem;
+        }
+
+        @include breakpoint-between (mobile, tablet) {
+            position: static;
+            position: static;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 0;
+            gap: 2.5rem;
+            overflow: hidden;
+        }
+
+        &--image {
+            position: relative;
+
+            img {
+                position: absolute;
+                left: 200px;
+                bottom: -58px;
+                max-width: 350px;
+                z-index: 1;
+
+                @include breakpoint-down (mobile) {
+                    position: static;
+                    max-width: 200px;
+                }
+
+                @include breakpoint-between (mobile, tablet) {
+                    position: static;
+
+                }
+            }
+
+            &-circles {
+                position: absolute;
+                left: 350px;
+                bottom: -170px;
+                transform: translateX(-45%);
+                width: 450px;
+                height: 450px;
+                border-radius: 50%;
+                pointer-events: none;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+
+                @include breakpoint-down (mobile) {
+                    top: -20%;
+                    left: 50%;
+                }
+
+                @include breakpoint-between (mobile, tablet) {
+                    width: 550px;
+                    height: 550px;
+                    top: -8%;
+                    left: 40%;
+                }
+
+                &::before,
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    border-radius: 50%;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                }
+
+                &::before {
+                    width: 550px;
+                    height: 550px;
+
+                    @include breakpoint-between (mobile, tablet) {
+                        width: 750px;
+                        height: 750px;
+                    }
+                }
+
+                &::after {
+                    width: 910px;
+                    height: 910px;
+
+                    @include breakpoint-between (mobile, tablet) {
+                        width: 1100px;
+                        height: 1100px;
+                    }
+                }
+            }
+        }
+
+        &--content {
+            @extend %flex-column;
+            margin-left: 750px;
+
+            @include breakpoint-down (mobile) {
+                justify-content: center;
+                align-items: center;
+                margin-left: 0;
+                text-align: center;
+            }
+
+            @include breakpoint-between (mobile, tablet) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-left: 0;
+            }
+
+            h1 {
+                text-transform: uppercase;
+                line-height: 60px;
+                letter-spacing: 1px;
+                margin: 0;
+                max-width: 200px;
+                font-size: 3.5rem;
+            }
+
+            @include breakpoint-between (mobile, tablet) {
+                text-align: center;
+            }
+
+            p {
+                opacity: .75;
+                max-width: 350px;
+            }
+        }
+
+        button {
+            @extend %button-shared;
+            border: none;
+            background-color: black;
+            color: white;
+
+            &:hover {
+                background-color: #1010107a;
+            }
+        }
+    }
+
+    &__mid {
+        background-image: url(../../assets/images/Home/image-speaker-zx7.jpg);
+        background-position: 50%;
+        background-size: cover;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+
+        &--content {
+            @extend %flex-column;
+            text-transform: uppercase;
+            padding-left: 5rem;
+
+            @include breakpoint-down (mobile) {
+                align-items: center;
+            }
+
+            h4 {
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin: 0;
+                font-size: 1.75rem;
+            }
+
+            button {
+                @extend %button-shared;
+                border: 1px solid black;
+                background-color: transparent;
+
+                &:hover {
+                    background-color: black;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        width: 100%;
+        gap: 1rem;
+
+        @include breakpoint-down (mobile) {
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        &--image {
+            width: 100%;
+
+            img {
+                width: 100%;
+                border-radius: 8px;
+                filter: brightness(60%)
+            }
+        }
+
+        &--content {
+            @extend %flex-column;
+            justify-content: center;
+            background-color: $gray-bg;
+            border-radius: 8px;
+            width: 100%;
+            padding-left: 5rem;
+
+            @include breakpoint-down (mobile) {
+                align-items: center;
+                padding: 2rem 5rem;
+            }
+
+            h4 {
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin: 0;
+                font-size: 1.75rem;
+            }
+
+            button {
+                @extend %button-shared;
+                border: 1px solid black;
+                background-color: transparent;
+
+                &:hover {
+                    background-color: black;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.footer__best-gear {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: $bestgearPadding;
+    background-color: white;
+    gap: 7.825rem;
+    width: 100%;
+
+    @include breakpoint-down (mobile) {
+        flex-direction: column;
+        padding: 1rem 2rem;
+        gap: 3rem;
+    }
+
+    @include breakpoint-between (mobile, tablet) {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 10% 5%;
+    }
+
+    &--image {
+
+        @include breakpoint-between (mobile, tablet) {
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 8px;
+        }
+    }
+
+    &--content {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+
+        @include breakpoint-down (mobile) {
+            justify-content: center;
+            align-items: center;
+        }
+
+        @include breakpoint-between (mobile, tablet) {
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            line-height: 44px;
+            font-size: 2.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+            max-inline-size: 16ch;
+            line-height: 1.2;
+
+            span {
+                color: $orange;
+            }
+        }
+
+        p {
+            opacity: .5;
+            max-inline-size: 50ch;
+            line-height: 25px;
+            font-size: .975rem;
+
+            @include breakpoint-between (mobile, tablet) {
+                max-inline-size: 66ch;
+                text-align: center;
+            }
+        }
+    }
+}

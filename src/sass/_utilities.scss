@@ -1,0 +1,25 @@
+%config{
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    line-height: 2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+%button-shared{
+    max-width: 170px;
+    @extend %config;
+}
+
+%button-summary{
+    width: 100%;
+    @extend %config;
+}
+
+%flex-column{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}

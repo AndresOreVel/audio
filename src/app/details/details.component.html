@@ -1,0 +1,60 @@
+<div class="details" *ngIf="product">
+    <section class="go__back-btn">
+        <button type="button" (click)="goBack()">Go back</button>
+    </section>
+    <section class="product__top">
+        <div class="product__top--image">
+            <img [src]="product.image" [alt]="product.alt">
+        </div>
+        <div class="product__top--content">
+            <p *ngIf="product.overline" class="product__top--content-overline">{{ product.overline }}</p>
+            <h4>{{ product.title }}</h4>
+            <p class="product__top--content-text">
+                {{ product.description }}
+            </p>
+            <p class="product__top--content-price">$ {{ product.price }}</p>
+            <div class="product__top--content-cart-container">
+                <div class="cart__box">
+                    <button class="cart__box__count-btn" (click)="decrease()">-</button>
+                    <p class="cart__box__count-quantity">{{ quantity }}</p>
+                    <button class="cart__box__count-btn" (click)="increase()">+</button>
+                </div>
+                <button type="button" class="add-btn" (click)="addToCart()">Add to cart</button>
+            </div>
+        </div>
+    </section>
+    <section class="product__mid">
+        <div class="product__mid__features">
+            <h4>Features</h4>
+            <p *ngFor="let f of product.features">{{ f }}</p>
+        </div>
+        <div class="product__mid__content">
+            <h4>In the box</h4>
+            <div *ngFor="let box of product.inTheBox" class="product__box">
+                <p class="product__box__quantity">{{ box.quantity }}x</p>
+                <p>{{ box.item }}</p>
+            </div>
+        </div>
+    </section>
+    <section class="product__gallery">
+        <div class="product__gallery-img1">
+            <img [src]="product.gallery[0]" alt="best gear image">
+        </div>
+        <div class="product__gallery-img2">
+            <img [src]="product.gallery[1]" alt="mark II model">
+        </div>
+        <div class="product__gallery-img3">
+            <img [src]="product.gallery[2]" alt="headphones image">
+        </div>
+    </section>
+    <section class="product__bottom">
+        <h4>You may also like</h4>
+        <div class="product__bottom__content">
+            <div *ngFor="let rec of product.recommendations" class="other__products">
+                <img [src]="rec.image" [alt]="rec.title">
+                <h4>{{ rec.title }}</h4>
+                <button (click)="goToDetails(rec.name)">See product</button>
+            </div>
+        </div>
+    </section>
+</div>

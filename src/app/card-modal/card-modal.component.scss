@@ -1,0 +1,142 @@
+@use '../../sass/variables' as *;
+@use '../../sass/utilities' as *;
+@use '../../sass/mixins' as *;
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    z-index: 1000;
+}
+
+img {
+    width: 64px;
+    border-radius: 8px;
+}
+
+%box-shared {
+    h4 {
+        font-size: 1.125rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    button:not(.remove) {
+        @extend %button-summary;
+        border: none;
+        background-color: $orange;
+        color: white;
+
+        &:hover {
+            background-color: $orange-light;
+        }
+    }
+}
+
+.modal,
+.summary {
+    @extend %box-shared;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    width: 300px;
+
+    @include breakpoint-down (mobile) {
+        width: 100%;
+    }
+
+    @include breakpoint-between (mobile, tablet) {
+        width: 100%;
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 20%;
+    right: 5%;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    z-index: 1001;
+
+    @include breakpoint-down (mobile) {
+        max-width: 90%;
+    }
+
+    @include breakpoint-between (mobile, tablet) {
+        max-width: 90%;
+    }
+}
+
+.summary__header {
+    display: flex;
+    justify-content: space-between;
+
+    .remove {
+        cursor: pointer;
+        border: none;
+        text-decoration: underline;
+        opacity: 1;
+        color: rgba(0, 0, 0, .5);
+        padding: 0;
+        background: none;
+        letter-spacing: 1px;
+        font-weight: 700;
+        white-space: nowrap;
+        text-transform: uppercase;
+
+        &:hover {
+            color: $orange;
+        }
+    }
+}
+
+.summary__products {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    line-height: 1.5rem;
+
+    &__deep {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        p {
+            opacity: .5;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+
+            h5 {
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+            }
+        }
+    }
+}
+
+.summary__payment {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-transform: uppercase;
+
+    p:first-child {
+        opacity: .5;
+    }
+
+    &-total,
+    &-shipping,
+    &-vat,
+    &-grand {
+        display: flex;
+        justify-content: space-between;
+    }
+}

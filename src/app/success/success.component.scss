@@ -1,0 +1,63 @@
+@use '../../sass/variables' as *;
+@use '../../sass/utilities' as *;
+@use '../../sass/mixins' as *;
+
+.success-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    z-index: 1000;
+}
+
+.success {
+    width: 500px;
+    position: fixed;
+    top: 20%;
+    right: 35%;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    @include breakpoint-down(mobile) {
+        width: 90%;
+        left: 50%; //Lo centro horizontalmente sin importar el ancho del viewport
+        transform: translateX(-50%);
+        right: auto; // eliminamos el right: 0 que lo pegaba al borde
+    }
+
+    @include breakpoint-between(mobile, tablet) {
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+    }
+
+    img {
+        width: 80px;
+    }
+
+    h4 {
+        font-size: 1.75rem;
+    }
+
+    p {
+        opacity: .5;
+        font-size: .975rem;
+    }
+
+    button {
+        @extend %button-summary;
+        border: none;
+        background-color: $orange;
+        color: white;
+
+        &:hover {
+            background-color: $orange-light;
+        }
+    }
+}

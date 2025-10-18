@@ -1,0 +1,64 @@
+<ng-container [ngSwitch]="mode">
+    <ng-container *ngSwitchCase="'modal'">
+        <div class="modal-backdrop" (click)="close.emit()">
+            <div class="modal">
+                <ng-container *ngTemplateOutlet="summary"></ng-container>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'checkout'">
+        <div class="summary">
+            <ng-container *ngTemplateOutlet="summary"></ng-container>
+        </div>
+    </ng-container>
+</ng-container>
+
+<ng-template #summary>
+    <div class="summary__header">
+        <h4>{{ mode === 'modal' ? 'Cart' : 'Summary'}}</h4>
+        <ng-container *ngIf="mode === 'modal'">
+            <button (click)="removeAll()" class="remove" type="button">Remove all</button>
+        </ng-container>
+    </div>
+    <div class="summary__products">
+        <ng-container *ngIf="cartService.items.length > 0; else emptyCart">
+            <div class="summary__products__deep" *ngFor="let item of cartService.items">
+                <img [src]="item.image" alt="{{ item.name }}">
+                <div class="item">
+                    <h5>{{ item.name }}</h5>
+                    <p>$ {{ item.price }}</p>
+                </div>
+                <p>x {{ item.quantity }}</p>
+            </div>
+        </ng-container>
+
+        <ng-template #emptyCart>
+            <p class="empty">Your cart is empty</p>
+        </ng-template>
+    </div>
+
+    <div class="summary__payment">
+        <div class="summary__payment-total">
+            <p>Total</p>
+            <p>$ {{ cartService.getSubtotal() }}</p>
+        </div>
+        <ng-container *ngIf="mode === 'checkout'">
+            <div class="summary__payment-shipping">
+                <p>Shipping</p>
+                <p>$ {{ cartService.getShipping() }}</p>
+            </div>
+            <div class="summary__payment-vat">
+                <p>Vat (included)</p>
+                <p>$ {{ cartService.getTax() }}</p>
+            </div>
+            <div class="summary__payment-grand">
+                <p>Gran Total</p>
+                <p>$ {{ cartService.getTotal() }}</p>
+            </div>
+        </ng-container>
+        <button type="button" (click)="action()" [disabled]="cartService.items.length === 0">
+            {{ mode === 'modal' ? 'Checkout' : 'Continue & Pay'}}
+        </button>
+    </div>
+</ng-template>

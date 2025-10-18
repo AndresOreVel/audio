@@ -1,0 +1,144 @@
+<section class="checkout">
+    <button type="button" class="go__back-btn" (click)="goBack()">Go back</button>
+    <form action="#" class="form">
+        <div class="checkout__card">
+            <h2>Checkout</h2>
+            <div class="checkout__container">
+                <h5>Billing Details</h5>
+                <div class="billing__details">
+                    <div class="form__container">
+                        <div class="form__container__row">
+                            <label for="name">Name</label>
+                            <span *ngIf="submitted && userInfo.name.trim().length === 0" class="error shake">This field
+                                is required</span>
+                            <span
+                                *ngIf="submitted && userInfo.name.trim().length > 0 && userInfo.name.trim().length < 3"
+                                class="error shake">Minimum 3 character required</span>
+                        </div>
+                        <input (ngModelChange)="onFormChange()" [(ngModel)]="userInfo.name" name="name" type="text" id="name" placeholder="Alexei Ward"
+                            minlength="3" maxlength="30" required>
+                    </div>
+                    <div class="form__container">
+                        <div class="form__container__row">
+                            <label for="email">Email Address</label>
+                            <span *ngIf="submitted && !userInfo.email" class="error shake">This field is required</span>
+                            <span *ngIf="userInfo.email && !isEmailValid()" class="error shake">Wrong Email
+                                format</span>
+                        </div>
+                        <input (ngModelChange)="onFormChange()" [(ngModel)]="userInfo.email" name="userInfo.email" type="email" id="email"
+                            placeholder="alexei@gmail.com" required>
+                    </div>
+                    <div class="form__container">
+                        <div class="form__container__row">
+                            <label for="phoneNumber">Phone Number</label>
+                            <span *ngIf="submitted && !userInfo.phone" class="error shake">This field is required</span>
+                            <span *ngIf="userInfo.phone && !isPhoneValid()" class="error shake">Invalid phone
+                                number</span>
+                        </div>
+                        <input (ngModelChange)="onFormChange()" [(ngModel)]="userInfo.phone" name="userInfo.phone" type="tel" id="phoneNumber"
+                            placeholder="+1202-555-0136" required>
+                    </div>
+                </div>
+            </div>
+            <div class="checkout__container">
+                <h5>Shipping info</h5>
+                <div class="billing__details">
+                    <div class="form__container">
+                        <div class="form__container__row">
+                            <label for="address">Your Address</label>
+                            <span *ngIf="submitted && !userInfo.address" class="error shake">This field is
+                                required</span>
+                            <span *ngIf="userInfo.address && !isValidAddress()" class="error shake">Invalid
+                                Address</span>
+                        </div>
+                        <input (ngModelChange)="onFormChange()" [(ngModel)]="userInfo.address" name="userInfo.address" type="text" id="address"
+                            placeholder="1137Williams Avenue">
+                    </div>
+                    <div class="form__container">
+                        <div class="form__container__row">
+                            <label for="zip">ZIP Code</label>
+                            <span *ngIf="submitted && !userInfo.zip" class="error shake">This field is required</span>
+                            <span *ngIf="userInfo.zip && !isValidZip()" class="error shake">Invalid Zip Code</span>
+                        </div>
+                        <input (ngModelChange)="onFormChange()" [(ngModel)]="userInfo.zip" name="userInfo.zip" type="number" id="zip" placeholder="10001"
+                            required>
+                    </div>
+                    <div class="form__container">
+                        <div class="form__container__row">
+                            <label for="city">City</label>
+                            <span *ngIf="submitted && !userInfo.city" class="error shake">This field is required</span>
+                            <span *ngIf="userInfo.city && !isValidCity()" class="error shake">Invalid City</span>
+                        </div>
+                        <input (ngModelChange)="onFormChange()" [(ngModel)]="userInfo.city" name="userInfo.city" type="text" id="city"
+                            placeholder="New York" required>
+                    </div>
+                    <div class="form__container">
+                        <div class="form__container__row">
+                            <label for="country">Country</label>
+                            <span *ngIf="submitted && !userInfo.country" class="error shake">This field is
+                                required</span>
+                            <span *ngIf="userInfo.country && !isValidCountry()" class="error shake">Invalid
+                                Country</span>
+                        </div>
+                        <input (ngModelChange)="onFormChange()" [(ngModel)]="userInfo.country" name="userInfo.country" type="text" id="country"
+                            placeholder="United States" required>
+                    </div>
+                </div>
+            </div>
+            <div class="checkout__container">
+                <h5>Payment Details</h5>
+                <div class="payment__container">
+                    <label for="payment">Payment Method</label>
+                    <div class="container--radio">
+                        <label class="container--radio-type" for="e-money">
+                            <input [(ngModel)]="paymentMethod" type="radio" id="e-money" name="payment" value="e-Money"
+                                checked>
+                            e-Money
+                        </label>
+                        <label class="container--radio-type" for="cash">
+                            <input [(ngModel)]="paymentMethod" type="radio" id="cash" name="payment" value="Cash">
+                            Cash on Delivery
+                        </label>
+                    </div>
+                </div>
+                <ng-container *ngIf="paymentMethod === 'e-Money'">
+                    <div class="payment__container">
+                        <div class="form__container">
+                            <div class="form__container__row">
+                                <label for="moneyNumber">e-Money Number</label>
+                                <span *ngIf="submitted && !userInfo.moneyNumber" class="error shake">This field is
+                                    required</span>
+                                <span *ngIf="userInfo.moneyNumber && !isValidMoneyNumber()" class="error shake">Invalid
+                                    Money number</span>
+                            </div>
+                            <input (ngModelChange)="onFormChange()" [(ngModel)]="userInfo.moneyNumber" name="userInfo.moneyNumber" type="number"
+                                id="moneyNumber" placeholder="238521993" required>
+                        </div>
+                        <div class="form__container">
+                            <div class="form__container__row">
+                                <label for="moneyPin">e-Money PIN</label>
+                                <span *ngIf="submitted && !userInfo.pin" class="error shake">This field is
+                                    required</span>
+                                <span *ngIf="userInfo.pin && !isValidPinNumber()" class="error shake">Invalid
+                                    pin number</span>
+                            </div>
+                            <input (ngModelChange)="onFormChange()" [(ngModel)]="userInfo.pin" name="userInfo.pin" type="number" placeholder="6891" required>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="paymentMethod === 'Cash'">
+                    <div class="delivery__container">
+                        <img src="../../assets/icons/icon-cash-on-delivery.svg" alt="cash icon">
+                        <p>The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier arrives at
+                            your residence.
+                            Just make sure your address is correct so that your order will not be cancelled.</p>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="checkout__menu">
+            <app-card-modal mode="checkout" (success)="onSuccess()"></app-card-modal>
+            <app-success *ngIf="showSuccess" (close)="closeSuccess()"></app-success>
+        </div>
+    </form>
+</section>

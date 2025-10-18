@@ -1,0 +1,55 @@
+<header>
+  <section class="header__main">
+    <img src="../assets/icons/logo.svg" alt="logo">
+    <nav class="nav">
+      <a *ngFor="let menuItem of menu.items" [routerLink]="menuItem.route" routerLinkActive="active">
+        <span>{{ menuItem.name }}</span>
+      </a>
+    </nav>
+    <button type="button" class="button__image" (click)="toggleCart()">
+      <img src="../assets/icons/icon-cart.svg" alt="cart logo">
+      <span class="cart-count" *ngIf="cartCount > 0"> {{ cartCount }}</span>
+    </button>
+  </section>
+  <hr>
+</header>
+<app-card-modal *ngIf="showCart" mode="modal" (click)="toggleCart()"></app-card-modal>
+<main>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+<footer>
+  <section class="footer__contact">
+    <div class="footer__contact__titles">
+      <img src="../assets/icons/logo.svg" alt="logo">
+      <nav class="footer__contact__titles--nav">
+        <a *ngFor="let menuItem of menu.items" [routerLink]="menuItem.route" routerLinkActive="active">
+          <span>{{ menuItem.name }}</span>
+        </a>
+      </nav>
+    </div>
+    <div class="footer__contact__description">
+      <div class="footer__contact__description__paragraph">
+        <p class="footer__contact__description__paragraph--text">
+          Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers
+          and sound specialists who are devoted to helping you get the most out of personal audio. Come and
+          visit our demo facility - we’re open 7 days a week.
+        </p>
+        <p class="footer__contact__description__paragraph--copyright">Copyright 2025. All Rights Reserved</p>
+      </div>
+      <div class="footer__contact__description__links">
+        <a href="#">
+          <img src="../assets/icons/icon-facebook.svg" alt="facebook icon">
+        </a>
+        <a href="#">
+          <img src="../assets/icons/X.png" alt="twitter icon">
+        </a>
+        <a href="#">
+          <img src="../assets/icons/icon-instagram.svg" alt="instagram icon">
+        </a>
+      </div>
+    </div>
+  </section>
+</footer>
+<app-toast></app-toast>
