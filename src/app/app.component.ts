@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, ViewportScroller } from '@angular/common';
+import { CommonModule, NgOptimizedImage, ViewportScroller } from '@angular/common';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AppNavigationService } from './shared/layout/app-navigation.service';
 import { AppMenu } from './shared/layout/app-menu';
@@ -11,7 +11,7 @@ import { CartItem, PruebaService } from './services/prueba.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, CardModalComponent, ToastComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, CardModalComponent, ToastComponent, NgOptimizedImage],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

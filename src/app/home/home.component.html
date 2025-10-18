@@ -8,7 +8,7 @@
             Experience natural, lifelike audio and exceptional build quality made for the passionate music
             enthusiast.
         </p>
-        <button (click)="showDetails(markII.name)">See product</button>
+        <button type="button" (click)="showDetails(markII.name)">See product</button>
     </section>
 </div>
 <section class="home__categories">
@@ -55,7 +55,7 @@
     <section class="home__products__mid" *ngIf="zx7">
         <div class="home__products__mid--content">
             <h4>ZX7 speaker</h4>
-            <button (click)="showDetails(zx7.name)">See product</button>
+            <button type="button" (click)="showDetails(zx7.name)">See product</button>
         </div>
     </section>
     <section class="home__products__bottom" *ngIf="yx1">
@@ -64,7 +64,7 @@
         </div>
         <div class="home__products__bottom--content">
             <h4>YX1 earphones</h4>
-            <button (click)="showDetails(yx1.name)">See product</button>
+            <button type="button" (click)="showDetails(yx1.name)">See product</button>
         </div>
     </section>
 </div>
