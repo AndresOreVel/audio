@@ -1,27 +1,25 @@
-# Ecommerce
+# Audiophile
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+Audiophile es un e-commerce centrado en la venta de dispositivos de audio de alta calidad. El proyecto ofrece una experiencia de compra fluida, organizada por categorías y con un proceso de checkout validado paso a paso.
 
-## Development server
+## Página principal (Home)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+La página principal presenta una vista general del catálogo disponible y da acceso directo a las tres categorías principales del sitio.
 
-## Code scaffolding
+## Categorías de producto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+El catálogo se divide en: headphones, earphones y speakers.
+Dentro de cada categoría se muestran todos los dispositivos disponibles. Cada producto incluye un botón "See product" que redirige a su página de detalles.
 
-## Build
+## Página de detalles del producto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Cada ficha de producto incluye: descripción ampliada, accesorios, precio, indicador de si se trata de un producto nuevo, galería de imágenes en detalle y un botón para añadirlo al carrito.
 
-## Running unit tests
+## Carrito de compra
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Al acceder al carrito, el usuario puede: revisar los productos añadidos, eliminarlos y continuar hacia el proceso de compra.
 
-## Running end-to-end tests
+## Checkout (verificación)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+En el proceso de checkout se solicitan datos personales, todos ellos con validación de campos: nombre, email, dirección, teléfono y método de pago (efectivo o tarjeta)
+Una vez completada la información y confirmado el pedido, se muestra un mensaje de agradecimiento.
