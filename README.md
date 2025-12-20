@@ -4,6 +4,12 @@
 
 Audiophile es un e-commerce centrado en la venta de dispositivos de audio de alta calidad. El proyecto ofrece una experiencia de compra fluida, organizada por categorías y con un proceso de checkout validado paso a paso.
 
+## Tecnologías utilizadas
+
+- Angular
+- TypeScript
+- Scss
+
 ## Página principal (Home)
 
 La página principal presenta una vista general del catálogo disponible y da acceso directo a las tres categorías principales del sitio.
